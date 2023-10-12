@@ -1,4 +1,11 @@
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.sun.codemodel.JCodeModel;
+import jsonFiles.Image;
+import jsonFiles.Result;
 import okhttp3.*;
+import org.jsonschema2pojo.*;
+import org.jsonschema2pojo.rules.RuleFactory;
+
 
 import java.io.*;
 import java.net.URL;
@@ -16,6 +23,8 @@ public class Main {
 
     static Logger logger = Logger.getLogger(Main.class.getName());
     static File musicFile;
+
+    static ObjectMapper mapper = new ObjectMapper();
 
     public static void main(String[] args) {
         logger.setLevel(Level.WARNING);
@@ -43,19 +52,29 @@ public class Main {
                 outstream.write(buffer, 0, len);
             }
             outstream.close();
-            is.close();
+
             logger.info("File downloaded");
 
             // Getting all the song details in an XML format
             File songDetails = interactWithApi();
 
-            // If no song details found
-            if (songDetails.length() == 0) {
-                logger.warning("Song cannot be found in record");
-            } else {
+            // Converting to Java Class - Uncomment this
+            convertJsonToJavaClass(songDetails.toURI().toURL(), new File("./src/"),
+                        "jsonFiles", "songDetails");
 
+
+
+            // Result -> AdditionalProperties -> Result string = "null";
+            Result result = mapper.readValue(songDetails, Result.class);
+
+            // if no match found
+            if (result.getAdditionalProperties().get("Result").equals("null")) {
+                // add implementation to skip to next loop and not continue any code in bottom
             }
 
+            else {
+
+            }
 
         }
         catch(Exception e){
@@ -81,7 +100,7 @@ public class Main {
             result = response.body().string();
             System.out.println(result);
 
-            FileWriter fileWriter = new FileWriter("./output.json");
+            FileWriter fileWriter = new FileWriter("./src/jsonFiles/output.json");
             fileWriter.write(result);
             fileWriter.close();
 
@@ -90,6 +109,30 @@ public class Main {
             logger.log(Level.SEVERE, "Cannot interact with API", e);
         }
 
-        return new File("./output.json");
+        return new File("./src/jsonFiles/output.json");
     }
+
+    private static void convertJsonToJavaClass(URL inputJsonUrl, File outputJavaClassDirectory, String packageName, String javaClassName)
+            throws IOException {
+        JCodeModel jcodeModel = new JCodeModel();
+
+        GenerationConfig config = new DefaultGenerationConfig() {
+            @Override
+            public boolean isGenerateBuilders() {
+                return true;
+            }
+
+            @Override
+            public SourceType getSourceType() {
+                return SourceType.JSON;
+            }
+        };
+
+        SchemaMapper mapper = new SchemaMapper(new RuleFactory(config, new Jackson2Annotator(config), new SchemaStore()), new SchemaGenerator());
+        mapper.generate(jcodeModel, javaClassName, packageName, inputJsonUrl);
+
+        jcodeModel.build(outputJavaClassDirectory);
+    }
+
+
 }
