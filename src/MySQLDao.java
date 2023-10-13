@@ -10,17 +10,17 @@ public class MySQLDao {
 
     private final static String DATABASE_URL = "jdbc:mysql://radiostream.mysql.database.azure.com:3306/radiostream?useSSL=true";
 
-    private MySQLDao(String username, String password, String tableName) {
+    MySQLDao(String username, String password, String tableName) {
         this.username = username;
         this.password = password;
         this.tableName = tableName;
     }
 
-    public MySQLDao start(String username, String password, String tableName) {
-        return new MySQLDao(username, password, tableName);
+    public void start(String username, String password, String tableName) {
+        new MySQLDao(username, password, tableName);
     }
 
-    public static boolean connect() throws SQLException {
+    public boolean connect() throws SQLException {
         try {
             connection = DriverManager.getConnection(DATABASE_URL, username, password);
             return connection.isValid(0);
@@ -29,9 +29,10 @@ public class MySQLDao {
         }
     }
 
-    public static HashMap<String, String> getQuery(String key) throws SQLException {
+    public HashMap<String, String> getQuery(String title, String artistName) throws SQLException {
         try (Statement stmt = connection.createStatement()) {
-            String selectSQL = "SELECT * FROM radiostream WHERE title=" + key;
+            String tableNameForQuery= "radiostream." + tableName;
+            String selectSQL = String.format("SELECT * FROM %s WHERE title='%s' AND artistname='%s'", tableNameForQuery, title, artistName);
             ResultSet resultSet = stmt.executeQuery(selectSQL);
             HashMap<String, String> results = new HashMap<>();
             while (resultSet.next()) {
@@ -44,7 +45,5 @@ public class MySQLDao {
             throw new SQLException(e);
         }
     }
-
-
 
 }

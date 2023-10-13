@@ -22,7 +22,7 @@ public class SongDetails {
     @JsonProperty("status")
     private String status;
     @JsonProperty("result")
-    private String result;
+    private Result result;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new LinkedHashMap<String, Object>();
 
@@ -42,16 +42,16 @@ public class SongDetails {
     }
 
     @JsonProperty("result")
-    public String getResult() {
+    public Result getResult() {
         return result;
     }
 
     @JsonProperty("result")
-    public void setResult(String result) {
+    public void setResult(Result result) {
         this.result = result;
     }
 
-    public SongDetails withResult(String result) {
+    public SongDetails withResult(Result result) {
         this.result = result;
         return this;
     }

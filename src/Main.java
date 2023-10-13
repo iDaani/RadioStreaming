@@ -1,28 +1,30 @@
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sun.codemodel.JCodeModel;
-import jsonFiles.Image;
 import jsonFiles.Result;
+import jsonFiles.SongDetails;
 import okhttp3.*;
 import org.jsonschema2pojo.*;
 import org.jsonschema2pojo.rules.RuleFactory;
 
-
 import java.io.*;
 import java.net.URL;
 import java.net.URLConnection;
+import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
  * https://stackoverflow.com/questions/4351582/record-streaming-audio-in-java
- *
+ * <p>
  * https://forum.freecodecamp.org/t/how-do-you-find-out-the-bitrate-of-an-audio-stream/467558/2
  */
 public class Main {
 
     static Logger logger = Logger.getLogger(Main.class.getName());
     static File musicFile;
+    static MySQLDao dao;
 
     static ObjectMapper mapper = new ObjectMapper();
 
@@ -36,7 +38,7 @@ public class Main {
     public static void main(String[] args) {
         logger.setLevel(Level.WARNING);
 
-        try{
+        try {
             logger.addHandler(new FileHandler("./logs/logs.log"));
 
             // Getting the connection to stream
@@ -67,24 +69,37 @@ public class Main {
 
             // Converting to Java Class - Uncomment this
             convertJsonToJavaClass(songDetails.toURI().toURL(), new File("./src/"),
-                        "jsonFiles", "songDetails");
-
+                    "jsonFiles", "songDetails");
 
 
             // Result -> AdditionalProperties -> Result string = "null";
-            Result result = mapper.readValue(songDetails, Result.class);
+            SongDetails result = mapper.readValue(songDetails, SongDetails.class);
 
             // if no match found
-            if (result.getAdditionalProperties().get("Result").equals("null")) {
+            if (result.getResult().toString().equals("null")) {
                 // add implementation to skip to next loop and not continue any code in bottom
-            } else {
-                getSongDetails(result);
+            }
+
+            // This code is if result exists
+
+            Result songSearchResult = result.getResult();
+
+            getSongDetails(songSearchResult);
+
+            if (!startConnection("itsdanii", "easyPassword123!", "songs")) {
+                throw new SQLException("Unable to connect to the database!");
+            }
+
+            if (doesSongAlreadyExist(songTitle, artistName)) {
+                // add implementation to skip to next loop and not continue any code in bottom
             }
 
 
 
-        }
-        catch(Exception e){
+
+
+
+        } catch (Exception e) {
             logger.log(Level.SEVERE, "Error found", e);
             System.out.print(e);
         }
@@ -147,5 +162,32 @@ public class Main {
         spotifyTrackUrl = songDetails.getSpotify().getExternalUrls().getSpotify();
     }
 
+    private static boolean startConnection(String username, String pwd, String tableName) throws SQLException {
+        dao = new MySQLDao(username, pwd, tableName);
+        dao.start(username, pwd, tableName);
+        return dao.connect();
+    }
+
+    /*
+    Get existing song if it exists.
+     */
+    private static HashMap<String, String> getSong(String songTitle, String artistName) throws SQLException {
+        HashMap<String, String> resultQuery = dao.getQuery(songTitle, artistName);
+        return resultQuery;
+    }
+
+    private static boolean doesSongAlreadyExist(String songTitle, String artistName) throws SQLException {
+
+        HashMap<String, String> existingSongsList = getSong(songTitle, artistName);
+
+        if (existingSongsList.isEmpty()) {
+            return false;
+        } else {
+            logger.info(String.format("Song already exists with - song title: %s, artist name: %s, spotifyURL: %s",
+                    existingSongsList.get("Artist Name"), existingSongsList.get("Song Title"),
+                    existingSongsList.get("Song URL")));
+            return true;
+        }
+    }
 
 }
