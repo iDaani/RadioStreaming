@@ -40,7 +40,20 @@ public class MySQLDao {
                 results.put("Song Title", resultSet.getString("title"));
                 results.put("Song URL", resultSet.getString("spotifyurl"));
             }
+            resultSet.close();
             return results;
+        } catch (SQLException e) {
+            throw new SQLException(e);
+        }
+    }
+
+    public int updateQuery(int counter, String title, String artistName, String songURL) throws SQLException {
+
+        try (Statement stmt = connection.createStatement()){
+            String insertSQL = String.format("INSERT INTO `radiostream`.`songs` (`idsongs`, `title`, `artistname`, `spotifyurl`) VALUES (%d, '%s', '%s', '%s')",
+                    counter, title, artistName, songURL);
+            return stmt.executeUpdate(insertSQL);
+
         } catch (SQLException e) {
             throw new SQLException(e);
         }

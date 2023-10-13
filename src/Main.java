@@ -37,6 +37,7 @@ public class Main {
 
     public static void main(String[] args) {
         logger.setLevel(Level.WARNING);
+        int counter = 2;
 
         try {
             logger.addHandler(new FileHandler("./logs/logs.log"));
@@ -94,8 +95,16 @@ public class Main {
                 // add implementation to skip to next loop and not continue any code in bottom
             }
 
+            counter++;
 
+            if (!addSongAndCheckIfAdded(counter, songTitle, artistName,spotifyTrackUrl)) {
+                logger.warning(String.format("Following song has not been added - Song Title: %s, Artist Name: %s, Spotify URL: %s",
+                        songTitle, artistName, spotifyTrackUrl));
+                // add implementation to skip to next loop
+            }
 
+            // post execution of everything
+            songDetails.delete();
 
 
 
@@ -188,6 +197,12 @@ public class Main {
                     existingSongsList.get("Song URL")));
             return true;
         }
+    }
+
+    private static boolean addSongAndCheckIfAdded(int counter, String songTitle, String artistName, String spotifyTrackUrl) throws SQLException {
+
+        return dao.updateQuery(counter, songTitle, artistName, spotifyTrackUrl) == 1;
+
     }
 
 }
