@@ -25,9 +25,9 @@ public class StoreSongsFromStream {
     static final String STREAM_LINK = "https://stream.zeno.fm/bg2umhl91ewvv";
     static final long ONE_MINUTE = 60000;
     static final long THREE_HOURS = 10800000;
-    static final String USERNAME = "itsdanii";
-    static final String PASSWORD = "easyPassword123!";
-    static final String TABLE_NAME = "songs";
+    static final String USERNAME = "";
+    static final String PASSWORD = "";
+    static final String TABLE_NAME = "";
     static final String API_TOKEN = "f1e7515045eae8aea47ee8aaa949382c";
     static final String MP3_FILE_LOCATION = "./songs/output.mp3";
     static final String JSON_FILE_LOCATION = "./src/jsonFiles/output.json";

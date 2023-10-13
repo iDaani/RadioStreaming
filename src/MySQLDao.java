@@ -6,7 +6,7 @@ import java.util.HashMap;
  */
 public class MySQLDao {
 
-    private final static String DATABASE_URL = "jdbc:mysql://radiostream.mysql.database.azure.com:3306/radiostream?useSSL=true";
+    private final static String DATABASE_URL = "";
     private static String username;
     private static String password;
     private static Connection connection;
