@@ -1,14 +1,16 @@
 import java.sql.*;
 import java.util.HashMap;
 
+/**
+ * This class is to implement connect, select, insert and disconnect functionalities with MySQL Database.
+ */
 public class MySQLDao {
 
+    private final static String DATABASE_URL = "jdbc:mysql://radiostream.mysql.database.azure.com:3306/radiostream?useSSL=true";
     private static String username;
     private static String password;
-    private String tableName;
     private static Connection connection;
-
-    private final static String DATABASE_URL = "jdbc:mysql://radiostream.mysql.database.azure.com:3306/radiostream?useSSL=true";
+    private String tableName;
 
     MySQLDao(String username, String password, String tableName) {
         this.username = username;
@@ -20,6 +22,9 @@ public class MySQLDao {
         new MySQLDao(username, password, tableName);
     }
 
+    /**
+     * Connect to the MySQL Database.
+     */
     public boolean connect() throws SQLException {
         try {
             connection = DriverManager.getConnection(DATABASE_URL, username, password);
@@ -29,9 +34,12 @@ public class MySQLDao {
         }
     }
 
+    /**
+     * Select queries from the MySQL Database and return them.
+     */
     public HashMap<String, String> getQuery(String title, String artistName) throws SQLException {
         try (Statement stmt = connection.createStatement()) {
-            String tableNameForQuery= "radiostream." + tableName;
+            String tableNameForQuery = "radiostream." + tableName;
             String selectSQL = String.format("SELECT * FROM %s WHERE title='%s' AND artistname='%s'", tableNameForQuery, title, artistName);
             ResultSet resultSet = stmt.executeQuery(selectSQL);
             HashMap<String, String> results = new HashMap<>();
@@ -47,9 +55,12 @@ public class MySQLDao {
         }
     }
 
+    /**
+     * Insert queries to the MySQL Database.
+     */
     public int updateQuery(int counter, String title, String artistName, String songURL) throws SQLException {
 
-        try (Statement stmt = connection.createStatement()){
+        try (Statement stmt = connection.createStatement()) {
             String insertSQL = String.format("INSERT INTO `radiostream`.`songs` (`idsongs`, `title`, `artistname`, `spotifyurl`) VALUES (%d, '%s', '%s', '%s')",
                     counter, title, artistName, songURL);
             return stmt.executeUpdate(insertSQL);
@@ -59,4 +70,14 @@ public class MySQLDao {
         }
     }
 
+    /**
+     * Close SQL Connectiom.
+     */
+    public void closeConnection() throws SQLException {
+        try {
+            connection.close();
+        } catch (SQLException e) {
+            throw new SQLException(e);
+        }
+    }
 }
