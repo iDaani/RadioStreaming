@@ -26,6 +26,13 @@ public class Main {
 
     static ObjectMapper mapper = new ObjectMapper();
 
+    // All the song values
+
+    static String songTitle;
+    static String artistName;
+    static String spotifyTrackUrl;
+
+
     public static void main(String[] args) {
         logger.setLevel(Level.WARNING);
 
@@ -70,11 +77,11 @@ public class Main {
             // if no match found
             if (result.getAdditionalProperties().get("Result").equals("null")) {
                 // add implementation to skip to next loop and not continue any code in bottom
+            } else {
+                getSongDetails(result);
             }
 
-            else {
 
-            }
 
         }
         catch(Exception e){
@@ -132,6 +139,12 @@ public class Main {
         mapper.generate(jcodeModel, javaClassName, packageName, inputJsonUrl);
 
         jcodeModel.build(outputJavaClassDirectory);
+    }
+
+    private static void getSongDetails(Result songDetails) {
+        songTitle = songDetails.getTitle();
+        artistName = songDetails.getArtist();
+        spotifyTrackUrl = songDetails.getSpotify().getExternalUrls().getSpotify();
     }
 
 
