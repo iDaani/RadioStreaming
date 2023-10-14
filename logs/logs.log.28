@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2023-10-14T18:54:12.534198600Z</date>
+  <millis>1697309652534</millis>
+  <nanos>198600</nanos>
+  <sequence>30</sequence>
+  <logger>StoreSongsFromStream</logger>
+  <level>SEVERE</level>
+  <class>StoreSongsFromStream</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>Error found</message>
+  <exception>
+    <message>java.sql.SQLException: java.sql.SQLException: No suitable driver found for </message>
+    <frame>
+      <class>MySQLDao</class>
+      <method>connect</method>
+      <line>33</line>
+    </frame>
+    <frame>
+      <class>StoreSongsFromStream</class>
+      <method>startConnection</method>
+      <line>245</line>
+    </frame>
+    <frame>
+      <class>StoreSongsFromStream</class>
+      <method>main</method>
+      <line>90</line>
+    </frame>
+  </exception>
+</record>
+<record>
+  <date>2023-10-14T18:54:19.734396100Z</date>
+  <millis>1697309659734</millis>
+  <nanos>396100</nanos>
+  <sequence>31</sequence>
+  <logger>StoreSongsFromStream</logger>
+  <level>SEVERE</level>
+  <class>StoreSongsFromStream</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>Error found</message>
+  <exception>
+    <message>java.sql.SQLException: java.sql.SQLException: No suitable driver found for </message>
+    <frame>
+      <class>MySQLDao</class>
+      <method>connect</method>
+      <line>33</line>
+    </frame>
+    <frame>
+      <class>StoreSongsFromStream</class>
+      <method>startConnection</method>
+      <line>245</line>
+    </frame>
+    <frame>
+      <class>StoreSongsFromStream</class>
+      <method>main</method>
+      <line>90</line>
+    </frame>
+  </exception>
+</record>
+<record>
+  <date>2023-10-14T18:54:26.784738500Z</date>
+  <millis>1697309666784</millis>
+  <nanos>738500</nanos>
+  <sequence>32</sequence>
+  <logger>StoreSongsFromStream</logger>
+  <level>SEVERE</level>
+  <class>StoreSongsFromStream</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>Error found</message>
+  <exception>
+    <message>java.sql.SQLException: java.sql.SQLException: No suitable driver found for </message>
+    <frame>
+      <class>MySQLDao</class>
+      <method>connect</method>
+      <line>33</line>
+    </frame>
+    <frame>
+      <class>StoreSongsFromStream</class>
+      <method>startConnection</method>
+      <line>245</line>
+    </frame>
+    <frame>
+      <class>StoreSongsFromStream</class>
+      <method>main</method>
+      <line>90</line>
+    </frame>
+  </exception>
+</record>
+</log>

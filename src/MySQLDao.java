@@ -80,4 +80,23 @@ public class MySQLDao {
             throw new SQLException(e);
         }
     }
+
+    public HashMap<String, String> getNotDownloadedSongs() throws SQLException {
+        try (Statement stmt = connection.createStatement()) {
+            String tableNameForQuery = "radiostream." + tableName;
+            String selectSQL = String.format("SELECT * FROM %s WHERE isdownloaded = 'no' ORDER BY idsongs ASC LIMIT 1",
+                    tableNameForQuery);
+            ResultSet resultSet = stmt.executeQuery(selectSQL);
+            HashMap<String, String> results = new HashMap<>();
+            while (resultSet.next()) {
+                results.put("Song ID", resultSet.getString("idsongs"));
+                results.put("Song Title", resultSet.getString("title"));
+                results.put("Song URL", resultSet.getString("spotifyurl"));
+            }
+            resultSet.close();
+            return results;
+        } catch (SQLException e) {
+            throw new SQLException(e);
+        }
+    }
 }

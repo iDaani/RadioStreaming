@@ -26,7 +26,7 @@ public class StoreSongsFromStream {
     static final long ONE_MINUTE = 60000;
     static final long THREE_HOURS = 10800000;
     static final String USERNAME = "";
-    static final String PASSWORD = "";
+    static final String PASSWORD = "!";
     static final String TABLE_NAME = "";
     static final String API_TOKEN = "f1e7515045eae8aea47ee8aaa949382c";
     static final String MP3_FILE_LOCATION = "./songs/output.mp3";
@@ -44,7 +44,7 @@ public class StoreSongsFromStream {
     public static void main(String[] args) throws SQLException {
         long start = System.currentTimeMillis();
         logger.setLevel(Level.WARNING);
-        int counter = 0;
+        int counter = 10;
 
         // Run the loop till three hours have passed
         do {

@@ -1,0 +1,524 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2023-10-14T18:53:04.203907900Z</date>
+  <millis>1697309584203</millis>
+  <nanos>907900</nanos>
+  <sequence>21</sequence>
+  <logger>StoreSongsFromStream</logger>
+  <level>SEVERE</level>
+  <class>StoreSongsFromStream</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>Error found</message>
+  <exception>
+    <message>java.sql.SQLException: java.sql.SQLException: No suitable driver found for </message>
+    <frame>
+      <class>MySQLDao</class>
+      <method>connect</method>
+      <line>33</line>
+    </frame>
+    <frame>
+      <class>StoreSongsFromStream</class>
+      <method>startConnection</method>
+      <line>245</line>
+    </frame>
+    <frame>
+      <class>StoreSongsFromStream</class>
+      <method>main</method>
+      <line>90</line>
+    </frame>
+  </exception>
+</record>
+<record>
+  <date>2023-10-14T18:53:11.329206800Z</date>
+  <millis>1697309591329</millis>
+  <nanos>206800</nanos>
+  <sequence>22</sequence>
+  <logger>StoreSongsFromStream</logger>
+  <level>SEVERE</level>
+  <class>StoreSongsFromStream</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>Error found</message>
+  <exception>
+    <message>java.sql.SQLException: java.sql.SQLException: No suitable driver found for </message>
+    <frame>
+      <class>MySQLDao</class>
+      <method>connect</method>
+      <line>33</line>
+    </frame>
+    <frame>
+      <class>StoreSongsFromStream</class>
+      <method>startConnection</method>
+      <line>245</line>
+    </frame>
+    <frame>
+      <class>StoreSongsFromStream</class>
+      <method>main</method>
+      <line>90</line>
+    </frame>
+  </exception>
+</record>
+<record>
+  <date>2023-10-14T18:53:28.047100100Z</date>
+  <millis>1697309608047</millis>
+  <nanos>100100</nanos>
+  <sequence>23</sequence>
+  <logger>StoreSongsFromStream</logger>
+  <level>SEVERE</level>
+  <class>StoreSongsFromStream</class>
+  <method>interactWithApi</method>
+  <thread>1</thread>
+  <message>Cannot interact with API</message>
+  <exception>
+    <message>java.net.SocketTimeoutException: timeout</message>
+    <frame>
+      <class>okhttp3.internal.http2.Http2Stream$StreamTimeout</class>
+      <method>newTimeoutException</method>
+      <line>675</line>
+    </frame>
+    <frame>
+      <class>okhttp3.internal.http2.Http2Stream$StreamTimeout</class>
+      <method>exitAndThrowIfTimedOut</method>
+      <line>684</line>
+    </frame>
+    <frame>
+      <class>okhttp3.internal.http2.Http2Stream</class>
+      <method>takeHeaders</method>
+      <line>143</line>
+    </frame>
+    <frame>
+      <class>okhttp3.internal.http2.Http2ExchangeCodec</class>
+      <method>readResponseHeaders</method>
+      <line>96</line>
+    </frame>
+    <frame>
+      <class>okhttp3.internal.connection.Exchange</class>
+      <method>readResponseHeaders</method>
+      <line>106</line>
+    </frame>
+    <frame>
+      <class>okhttp3.internal.http.CallServerInterceptor</class>
+      <method>intercept</method>
+      <line>79</line>
+    </frame>
+    <frame>
+      <class>okhttp3.internal.http.RealInterceptorChain</class>
+      <method>proceed</method>
+      <line>109</line>
+    </frame>
+    <frame>
+      <class>okhttp3.internal.connection.ConnectInterceptor</class>
+      <method>intercept</method>
+      <line>34</line>
+    </frame>
+    <frame>
+      <class>okhttp3.internal.http.RealInterceptorChain</class>
+      <method>proceed</method>
+      <line>109</line>
+    </frame>
+    <frame>
+      <class>okhttp3.internal.cache.CacheInterceptor</class>
+      <method>intercept</method>
+      <line>95</line>
+    </frame>
+    <frame>
+      <class>okhttp3.internal.http.RealInterceptorChain</class>
+      <method>proceed</method>
+      <line>109</line>
+    </frame>
+    <frame>
+      <class>okhttp3.internal.http.BridgeInterceptor</class>
+      <method>intercept</method>
+      <line>83</line>
+    </frame>
+    <frame>
+      <class>okhttp3.internal.http.RealInterceptorChain</class>
+      <method>proceed</method>
+      <line>109</line>
+    </frame>
+    <frame>
+      <class>okhttp3.internal.http.RetryAndFollowUpInterceptor</class>
+      <method>intercept</method>
+      <line>76</line>
+    </frame>
+    <frame>
+      <class>okhttp3.internal.http.RealInterceptorChain</class>
+      <method>proceed</method>
+      <line>109</line>
+    </frame>
+    <frame>
+      <class>okhttp3.internal.connection.RealCall</class>
+      <method>getResponseWithInterceptorChain$okhttp</method>
+      <line>201</line>
+    </frame>
+    <frame>
+      <class>okhttp3.internal.connection.RealCall</class>
+      <method>execute</method>
+      <line>154</line>
+    </frame>
+    <frame>
+      <class>StoreSongsFromStream</class>
+      <method>interactWithApi</method>
+      <line>188</line>
+    </frame>
+    <frame>
+      <class>StoreSongsFromStream</class>
+      <method>main</method>
+      <line>64</line>
+    </frame>
+  </exception>
+</record>
+<record>
+  <date>2023-10-14T18:53:28.076241Z</date>
+  <millis>1697309608076</millis>
+  <nanos>241000</nanos>
+  <sequence>24</sequence>
+  <logger>StoreSongsFromStream</logger>
+  <level>SEVERE</level>
+  <class>StoreSongsFromStream</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>Error found</message>
+  <exception>
+    <message>java.sql.SQLException: java.sql.SQLException: No suitable driver found for </message>
+    <frame>
+      <class>MySQLDao</class>
+      <method>connect</method>
+      <line>33</line>
+    </frame>
+    <frame>
+      <class>StoreSongsFromStream</class>
+      <method>startConnection</method>
+      <line>245</line>
+    </frame>
+    <frame>
+      <class>StoreSongsFromStream</class>
+      <method>main</method>
+      <line>90</line>
+    </frame>
+  </exception>
+</record>
+<record>
+  <date>2023-10-14T18:53:44.338993400Z</date>
+  <millis>1697309624338</millis>
+  <nanos>993400</nanos>
+  <sequence>25</sequence>
+  <logger>StoreSongsFromStream</logger>
+  <level>SEVERE</level>
+  <class>StoreSongsFromStream</class>
+  <method>interactWithApi</method>
+  <thread>1</thread>
+  <message>Cannot interact with API</message>
+  <exception>
+    <message>java.net.SocketTimeoutException: timeout</message>
+    <frame>
+      <class>okhttp3.internal.http2.Http2Stream$StreamTimeout</class>
+      <method>newTimeoutException</method>
+      <line>675</line>
+    </frame>
+    <frame>
+      <class>okhttp3.internal.http2.Http2Stream$StreamTimeout</class>
+      <method>exitAndThrowIfTimedOut</method>
+      <line>684</line>
+    </frame>
+    <frame>
+      <class>okhttp3.internal.http2.Http2Stream</class>
+      <method>takeHeaders</method>
+      <line>143</line>
+    </frame>
+    <frame>
+      <class>okhttp3.internal.http2.Http2ExchangeCodec</class>
+      <method>readResponseHeaders</method>
+      <line>96</line>
+    </frame>
+    <frame>
+      <class>okhttp3.internal.connection.Exchange</class>
+      <method>readResponseHeaders</method>
+      <line>106</line>
+    </frame>
+    <frame>
+      <class>okhttp3.internal.http.CallServerInterceptor</class>
+      <method>intercept</method>
+      <line>79</line>
+    </frame>
+    <frame>
+      <class>okhttp3.internal.http.RealInterceptorChain</class>
+      <method>proceed</method>
+      <line>109</line>
+    </frame>
+    <frame>
+      <class>okhttp3.internal.connection.ConnectInterceptor</class>
+      <method>intercept</method>
+      <line>34</line>
+    </frame>
+    <frame>
+      <class>okhttp3.internal.http.RealInterceptorChain</class>
+      <method>proceed</method>
+      <line>109</line>
+    </frame>
+    <frame>
+      <class>okhttp3.internal.cache.CacheInterceptor</class>
+      <method>intercept</method>
+      <line>95</line>
+    </frame>
+    <frame>
+      <class>okhttp3.internal.http.RealInterceptorChain</class>
+      <method>proceed</method>
+      <line>109</line>
+    </frame>
+    <frame>
+      <class>okhttp3.internal.http.BridgeInterceptor</class>
+      <method>intercept</method>
+      <line>83</line>
+    </frame>
+    <frame>
+      <class>okhttp3.internal.http.RealInterceptorChain</class>
+      <method>proceed</method>
+      <line>109</line>
+    </frame>
+    <frame>
+      <class>okhttp3.internal.http.RetryAndFollowUpInterceptor</class>
+      <method>intercept</method>
+      <line>76</line>
+    </frame>
+    <frame>
+      <class>okhttp3.internal.http.RealInterceptorChain</class>
+      <method>proceed</method>
+      <line>109</line>
+    </frame>
+    <frame>
+      <class>okhttp3.internal.connection.RealCall</class>
+      <method>getResponseWithInterceptorChain$okhttp</method>
+      <line>201</line>
+    </frame>
+    <frame>
+      <class>okhttp3.internal.connection.RealCall</class>
+      <method>execute</method>
+      <line>154</line>
+    </frame>
+    <frame>
+      <class>StoreSongsFromStream</class>
+      <method>interactWithApi</method>
+      <line>188</line>
+    </frame>
+    <frame>
+      <class>StoreSongsFromStream</class>
+      <method>main</method>
+      <line>64</line>
+    </frame>
+  </exception>
+</record>
+<record>
+  <date>2023-10-14T18:53:44.367701600Z</date>
+  <millis>1697309624367</millis>
+  <nanos>701600</nanos>
+  <sequence>26</sequence>
+  <logger>StoreSongsFromStream</logger>
+  <level>SEVERE</level>
+  <class>StoreSongsFromStream</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>Error found</message>
+  <exception>
+    <message>java.sql.SQLException: java.sql.SQLException: No suitable driver found for </message>
+    <frame>
+      <class>MySQLDao</class>
+      <method>connect</method>
+      <line>33</line>
+    </frame>
+    <frame>
+      <class>StoreSongsFromStream</class>
+      <method>startConnection</method>
+      <line>245</line>
+    </frame>
+    <frame>
+      <class>StoreSongsFromStream</class>
+      <method>main</method>
+      <line>90</line>
+    </frame>
+  </exception>
+</record>
+<record>
+  <date>2023-10-14T18:53:51.060250200Z</date>
+  <millis>1697309631060</millis>
+  <nanos>250200</nanos>
+  <sequence>27</sequence>
+  <logger>StoreSongsFromStream</logger>
+  <level>SEVERE</level>
+  <class>StoreSongsFromStream</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>Error found</message>
+  <exception>
+    <message>java.sql.SQLException: java.sql.SQLException: No suitable driver found for </message>
+    <frame>
+      <class>MySQLDao</class>
+      <method>connect</method>
+      <line>33</line>
+    </frame>
+    <frame>
+      <class>StoreSongsFromStream</class>
+      <method>startConnection</method>
+      <line>245</line>
+    </frame>
+    <frame>
+      <class>StoreSongsFromStream</class>
+      <method>main</method>
+      <line>90</line>
+    </frame>
+  </exception>
+</record>
+<record>
+  <date>2023-10-14T18:53:58.173763300Z</date>
+  <millis>1697309638173</millis>
+  <nanos>763300</nanos>
+  <sequence>28</sequence>
+  <logger>StoreSongsFromStream</logger>
+  <level>SEVERE</level>
+  <class>StoreSongsFromStream</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>Error found</message>
+  <exception>
+    <message>java.sql.SQLException: java.sql.SQLException: No suitable driver found for </message>
+    <frame>
+      <class>MySQLDao</class>
+      <method>connect</method>
+      <line>33</line>
+    </frame>
+    <frame>
+      <class>StoreSongsFromStream</class>
+      <method>startConnection</method>
+      <line>245</line>
+    </frame>
+    <frame>
+      <class>StoreSongsFromStream</class>
+      <method>main</method>
+      <line>90</line>
+    </frame>
+  </exception>
+</record>
+<record>
+  <date>2023-10-14T18:54:05.080052800Z</date>
+  <millis>1697309645080</millis>
+  <nanos>52800</nanos>
+  <sequence>29</sequence>
+  <logger>StoreSongsFromStream</logger>
+  <level>SEVERE</level>
+  <class>StoreSongsFromStream</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>Error found</message>
+  <exception>
+    <message>java.sql.SQLException: java.sql.SQLException: No suitable driver found for </message>
+    <frame>
+      <class>MySQLDao</class>
+      <method>connect</method>
+      <line>33</line>
+    </frame>
+    <frame>
+      <class>StoreSongsFromStream</class>
+      <method>startConnection</method>
+      <line>245</line>
+    </frame>
+    <frame>
+      <class>StoreSongsFromStream</class>
+      <method>main</method>
+      <line>90</line>
+    </frame>
+  </exception>
+</record>
+<record>
+  <date>2023-10-14T18:54:12.534198600Z</date>
+  <millis>1697309652534</millis>
+  <nanos>198600</nanos>
+  <sequence>30</sequence>
+  <logger>StoreSongsFromStream</logger>
+  <level>SEVERE</level>
+  <class>StoreSongsFromStream</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>Error found</message>
+  <exception>
+    <message>java.sql.SQLException: java.sql.SQLException: No suitable driver found for </message>
+    <frame>
+      <class>MySQLDao</class>
+      <method>connect</method>
+      <line>33</line>
+    </frame>
+    <frame>
+      <class>StoreSongsFromStream</class>
+      <method>startConnection</method>
+      <line>245</line>
+    </frame>
+    <frame>
+      <class>StoreSongsFromStream</class>
+      <method>main</method>
+      <line>90</line>
+    </frame>
+  </exception>
+</record>
+<record>
+  <date>2023-10-14T18:54:19.734396100Z</date>
+  <millis>1697309659734</millis>
+  <nanos>396100</nanos>
+  <sequence>31</sequence>
+  <logger>StoreSongsFromStream</logger>
+  <level>SEVERE</level>
+  <class>StoreSongsFromStream</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>Error found</message>
+  <exception>
+    <message>java.sql.SQLException: java.sql.SQLException: No suitable driver found for </message>
+    <frame>
+      <class>MySQLDao</class>
+      <method>connect</method>
+      <line>33</line>
+    </frame>
+    <frame>
+      <class>StoreSongsFromStream</class>
+      <method>startConnection</method>
+      <line>245</line>
+    </frame>
+    <frame>
+      <class>StoreSongsFromStream</class>
+      <method>main</method>
+      <line>90</line>
+    </frame>
+  </exception>
+</record>
+<record>
+  <date>2023-10-14T18:54:26.784738500Z</date>
+  <millis>1697309666784</millis>
+  <nanos>738500</nanos>
+  <sequence>32</sequence>
+  <logger>StoreSongsFromStream</logger>
+  <level>SEVERE</level>
+  <class>StoreSongsFromStream</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>Error found</message>
+  <exception>
+    <message>java.sql.SQLException: java.sql.SQLException: No suitable driver found for </message>
+    <frame>
+      <class>MySQLDao</class>
+      <method>connect</method>
+      <line>33</line>
+    </frame>
+    <frame>
+      <class>StoreSongsFromStream</class>
+      <method>startConnection</method>
+      <line>245</line>
+    </frame>
+    <frame>
+      <class>StoreSongsFromStream</class>
+      <method>main</method>
+      <line>90</line>
+    </frame>
+  </exception>
+</record>
+</log>
